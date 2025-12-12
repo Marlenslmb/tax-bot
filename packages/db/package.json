@@ -1,0 +1,11 @@
+{
+  "name": "@bizassist/db",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.17.0"
+  }
+}

@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TaxRegime {
+  PATENT
+  SIMPLIFIED
+  GENERAL
+  UNKNOWN
+}
+
+model User {
+  id        String   @id @default(cuid())
+  tgUserId  String   @unique
+  tgName    String?
+  inn       String?
+  regime    TaxRegime @default(UNKNOWN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  calculations Calculation[]
+}
+
+model Calculation {
+  id        String   @id @default(cuid())
+  userId    String
+  regime    TaxRegime
+  income    Decimal?
+  taxAmount Decimal
+  note      String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}

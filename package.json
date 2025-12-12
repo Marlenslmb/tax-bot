@@ -1,0 +1,26 @@
+{
+  "name": "bizassist-monorepo",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter ./apps/** dev",
+    "build": "pnpm -r --filter ./apps/** build",
+    "lint": "pnpm -r --filter ./apps/** lint",
+    "start": "pnpm -r --filter ./apps/** start",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:seed": "tsx prisma/seed.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.2.0",
+    "bcryptjs": "^2.4.3",
+    "eslint": "^9.9.0",
+    "prettier": "^3.3.3",
+    "prisma": "^5.17.0",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.17.0"
+  }
+}
